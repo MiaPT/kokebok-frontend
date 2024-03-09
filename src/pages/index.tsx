@@ -24,9 +24,9 @@ export default function Home() {
   };
 
   return (
-    <main className='w-[70vw] ml-auto mr-auto'>
+    <main className='w-[70vw] ml-auto mr-auto mt-14'>
       <div className='flex w-full justify-center '>
-          <div className='grid grid-cols-5 gap-2'>
+          <div className='grid grid-cols-3 gap-6'>
             {recipes.map((r) => (
               <RecipeCard recipe={r} />
             ))}
