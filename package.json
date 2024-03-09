@@ -20,6 +20,7 @@
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
+    "@skeletonlabs/tw-plugin": "^0.3.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
