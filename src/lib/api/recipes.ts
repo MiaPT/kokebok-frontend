@@ -25,10 +25,12 @@ export function useRecipes() {
 }
 
 export function useRecipe(id: number) {
-  const { data: recipe } = useQuery<Recipe[] | null>({
+  const { data: recipe } = useQuery<Recipe | null>({
     queryKey: ['recipe-detail', id],
     queryFn: () =>
-      fetch(`http://127.0.0.1:8000/api/recipes/recipes/${id}`).then((r) => r.json()),
+      fetch(`http://127.0.0.1:8000/api/recipes/recipe/${id}`).then((r) =>
+        r.json()
+      ),
     initialData: null,
   });
 

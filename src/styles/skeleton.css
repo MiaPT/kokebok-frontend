@@ -25,42 +25,41 @@ SOFTWARE.
 @tailwind components;
 
 @layer components {
-	.card {
-		/* background */
-		@apply bg-surface-100;
-		/* Ring */
-		@apply ring-outline;
-		/* Theme: Rounded */
-		@apply rounded-container;
-	}
+  .card {
+    /* background */
+    @apply bg-surface-100;
+    /* Ring */
+    @apply ring-outline;
+    /* Theme: Rounded */
+    @apply rounded-container;
+  }
 
-	/* === Regions === */
+  /* === Regions === */
 
-	.card-header {
-		@apply p-4 pb-0;
-	}
+  .card-header {
+    @apply p-4 pb-0;
+  }
 
-	.card-footer {
-		@apply p-4 pt-0;
-	}
+  .card-footer {
+    @apply p-4 pt-0;
+  }
 
-	/* === States === */
+  /* === States === */
 
-	a.card {
-		@apply transition-all hover:brightness-105;
-	}
+  a.card {
+    @apply transition-all hover:brightness-105;
+  }
 
-	.card-hover {
-		@apply transition-all hover:scale-[101%] hover:shadow-xl;
-	}
+  .card-hover {
+    @apply transition-all hover:scale-[101%] hover:shadow-xl;
+  }
 
-    .ring-outline {
-        --tw-ring-color: rgb(23 23 23 / 0.05)
-    }
+  .ring-outline {
+    --tw-ring-color: rgb(23 23 23 / 0.05);
+  }
 
-    .rounded-container {
-
-    }
+  .rounded-container {
+  }
 }
 
 /*ø
