@@ -10,6 +10,7 @@
     "prettier": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.18",
     "@tanstack/react-query": "^5.24.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
