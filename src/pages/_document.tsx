@@ -6,7 +6,7 @@ export default function Document() {
     <Html lang='en'>
       <Head />
       <Navbar/>
-      <body className='bg-surface-200'>
+      <body data-theme="sahara">
         <Main />
         <NextScript />
       </body>
