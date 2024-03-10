@@ -5,8 +5,8 @@ export default function Document() {
   return (
     <Html lang='en'>
       <Head />
-      <Navbar/>
-      <body data-theme="sahara">
+      <Navbar />
+      <body data-theme='sahara'>
         <Main />
         <NextScript />
       </body>

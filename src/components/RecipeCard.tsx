@@ -8,7 +8,7 @@ interface RecipeCardProps {
 export function RecipeCard({ recipe }: RecipeCardProps) {
   return (
     <Link href={`/recipes/${recipe.id}`}>
-      <div className='card bg-initial card-hover overflow-hidden'>
+      <div className='bg-initial card card-hover overflow-hidden'>
         <header>
           <Image src={placeholderImage} alt='animemat:)' />
         </header>

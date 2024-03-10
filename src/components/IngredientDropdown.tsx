@@ -14,7 +14,6 @@ export default function IngredientDropdown({
   const [ingredientInput, setIngredientInput] = useState<string>('');
   const [selectedIngredient, setSelected] = useState<Ingredient | null>(null);
 
-
   const filteredIngredients =
     ingredientInput === ''
       ? ingredients
