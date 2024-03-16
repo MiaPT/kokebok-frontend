@@ -29,7 +29,11 @@ export default function IngredientDropdown({
 
   return (
     <>
-      <AddIngredientDialog initialValue={ingredientInput} isOpen={isIngredientFormOpen} setIsOpen={setIsIngredientFormOpen}/>
+      <AddIngredientDialog
+        initialValue={ingredientInput}
+        isOpen={isIngredientFormOpen}
+        setIsOpen={setIsIngredientFormOpen}
+      />
       <Combobox
         value={selectedIngredient}
         onChange={(i) => {
@@ -46,7 +50,9 @@ export default function IngredientDropdown({
         ></Combobox.Input>
         <Combobox.Options>
           {filteredIngredients.length === 0 && ingredientInput != '' ? (
-            <button type='button' onClick={() => setIsIngredientFormOpen(true)}>Add {ingredientInput}</button>
+            <button type='button' onClick={() => setIsIngredientFormOpen(true)}>
+              Add {ingredientInput}
+            </button>
           ) : (
             filteredIngredients.map((i) => (
               <Combobox.Option key={i.id} value={i}>
