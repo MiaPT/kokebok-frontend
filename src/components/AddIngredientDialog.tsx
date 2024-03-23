@@ -1,5 +1,5 @@
 import { truncate } from 'fs';
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -28,8 +28,12 @@ export default function AddIngredientDialog({
   isOpen,
   setIsOpen,
 }: IngredientFormProps) {
-  const [newIngredientName, setNewIngredientName] = useState(initialValue);
+  const [newIngredientName, setNewIngredientName] = useState('');
   const [isUbiquitous, setIsUbiquitous] = useState(false);
+
+  useEffect(() => {
+    setNewIngredientName(initialValue);
+  }, [initialValue]);
 
   return (
     <Dialog open={isOpen}>

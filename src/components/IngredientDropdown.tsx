@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { Combobox } from '@headlessui/react';
 import { useIngredients } from '@/lib/api/recipes';
-import AddIngredientDialog from './IngredientForm';
+import AddIngredientDialog from './AddIngredientDialog';
 
 interface IngredientDropdownProps {
   updateIngredients: (ingredient: Ingredient) => void;
