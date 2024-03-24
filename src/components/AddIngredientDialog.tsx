@@ -1,5 +1,6 @@
 import { truncate } from 'fs';
 import { useState, Fragment, useEffect } from 'react';
+import { createIngredient } from '@/lib/api/recipes';
 import {
   Dialog,
   DialogContent,
@@ -75,7 +76,13 @@ export default function AddIngredientDialog({
           <div className='grid grid-cols-4 items-center gap-4'></div>
         </div>
         <DialogFooter>
-          <button type='submit' onClick={() => setIsOpen(false)}>
+          <button
+            type='submit'
+            onClick={() => {
+              setIsOpen(false);
+              createIngredient(null, newIngredientName, isUbiquitous);
+            }}
+          >
             Save changes
           </button>
         </DialogFooter>
