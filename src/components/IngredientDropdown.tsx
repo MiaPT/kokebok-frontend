@@ -33,14 +33,17 @@ export default function IngredientDropdown({
         initialValue={ingredientInput}
         isOpen={isIngredientFormOpen}
         setIsOpen={setIsIngredientFormOpen}
-        addIngredient={(i: Ingredient) => {addIngredient(i); setIngredientInput("")} }
+        addIngredient={(i: Ingredient) => {
+          addIngredient(i);
+          setIngredientInput('');
+        }}
       />
       <Combobox
         value={selectedIngredient}
         onChange={(i) => {
           setSelected(i);
           i && addIngredient(i);
-          setIngredientInput("");
+          setIngredientInput('');
         }}
       >
         <Combobox.Label className={'text-white'}>

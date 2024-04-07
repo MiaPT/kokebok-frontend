@@ -28,7 +28,6 @@ declare type Recipe = {
   other_source?: string;
 };
 
-
 declare type Ingredient = {
   id: number;
   name_no: string;

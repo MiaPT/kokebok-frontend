@@ -1,14 +1,12 @@
 import { QueryClient, useQuery, useQueryClient } from '@tanstack/react-query';
 
-const baseUrl = 'http://127.0.0.1:8000'
+const baseUrl = 'http://127.0.0.1:8000';
 
 export function useIngredients() {
   const { data: ingredients } = useQuery<Ingredient[]>({
     queryKey: ['ingredients-list'],
     queryFn: () =>
-      fetch(`${baseUrl}/api/recipes/ingredients`).then((r) =>
-        r.json()
-      ),
+      fetch(`${baseUrl}/api/recipes/ingredients`).then((r) => r.json()),
     initialData: [],
   });
 
@@ -30,9 +28,7 @@ export function useRecipe(id: number) {
   const { data: recipe } = useQuery<Recipe | null>({
     queryKey: ['recipe-detail', id],
     queryFn: () =>
-      fetch(`${baseUrl}/api/recipes/recipe/${id}`).then((r) =>
-        r.json()
-      ),
+      fetch(`${baseUrl}/api/recipes/recipe/${id}`).then((r) => r.json()),
     initialData: null,
   });
 
@@ -52,21 +48,23 @@ export async function createIngredient(
     body: JSON.stringify(ingredient),
   };
   console.log('json: ', requestOptions.body);
-  const res = await fetch(`${baseUrl}/api/recipes/ingredients`, requestOptions)
-  const data: Ingredient = await res.json()
-  queryClient.setQueryData(['ingredients-list'], (oldIngredientList: Ingredient[]) => [...oldIngredientList, data])
-  return data
-  
+  const res = await fetch(`${baseUrl}/api/recipes/ingredients`, requestOptions);
+  const data: Ingredient = await res.json();
+  queryClient.setQueryData(
+    ['ingredients-list'],
+    (oldIngredientList: Ingredient[]) => [...oldIngredientList, data]
+  );
+  return data;
 }
 
-export function createRecipe(recipe: Recipe, image?: Blob){
-  let formData = new FormData()
-  image && formData.append("hero_image", image)
-  formData.append("full_recipe", JSON.stringify(recipe))
+export function createRecipe(recipe: Recipe, image?: Blob) {
+  let formData = new FormData();
+  image && formData.append('hero_image', image);
+  formData.append('full_recipe', JSON.stringify(recipe));
   const requestOptions = {
     method: 'POST',
-    body: formData
-  }
+    body: formData,
+  };
   console.log('json: ', requestOptions.body);
   fetch(`${baseUrl}/api/recipes/recipes`, requestOptions)
     .then((response) => response.json())
