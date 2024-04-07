@@ -102,7 +102,8 @@ export default function RecipeForm() {
                 {units.map((u) => (
                     <option value={u}>{u}</option>
                 ))}
-            </select>
+          </select>
+          <button type="button" onClick={() => setRecipeIngredients(recipeIngredients.toSpliced(index, 1))}>❌</button>
         </div>
       ))}
       <button className='border mt-5' type='submit' >Submit</button>
