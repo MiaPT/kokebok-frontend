@@ -85,7 +85,7 @@ export default function RecipeForm() {
 
       <br />
       <br />
-      <IngredientDropdown updateIngredients={addRecipeIngredient} />
+      <IngredientDropdown addIngredient={addRecipeIngredient} />
       <br/>
       <br/>
       <br/>

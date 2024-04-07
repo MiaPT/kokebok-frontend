@@ -4,11 +4,11 @@ import { useIngredients } from '@/lib/api/recipes';
 import AddIngredientDialog from './AddIngredientDialog';
 
 interface IngredientDropdownProps {
-  updateIngredients: (ingredient: Ingredient) => void;
+  addIngredient: (ingredient: Ingredient) => void;
 }
 
 export default function IngredientDropdown({
-  updateIngredients,
+  addIngredient,
 }: IngredientDropdownProps) {
   const ingredients = useIngredients();
 
@@ -33,12 +33,14 @@ export default function IngredientDropdown({
         initialValue={ingredientInput}
         isOpen={isIngredientFormOpen}
         setIsOpen={setIsIngredientFormOpen}
+        addIngredient={(i: Ingredient) => {addIngredient(i); setIngredientInput("")} }
       />
       <Combobox
         value={selectedIngredient}
         onChange={(i) => {
           setSelected(i);
-          i && updateIngredients(i);
+          i && addIngredient(i);
+          setIngredientInput("");
         }}
       >
         <Combobox.Label className={'text-white'}>

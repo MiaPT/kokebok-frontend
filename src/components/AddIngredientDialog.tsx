@@ -17,20 +17,24 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/shadcn/Tooltip';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface IngredientFormProps {
   initialValue: string;
   isOpen?: boolean;
   setIsOpen: (b: boolean) => void;
+  addIngredient: (i: Ingredient) => void;
 }
 
 export default function AddIngredientDialog({
   initialValue,
   isOpen,
   setIsOpen,
+  addIngredient
 }: IngredientFormProps) {
   const [newIngredientName, setNewIngredientName] = useState('');
   const [isUbiquitous, setIsUbiquitous] = useState(false);
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     setNewIngredientName(initialValue);
@@ -78,9 +82,10 @@ export default function AddIngredientDialog({
           <button
             className='btn variant-filled'
             type='submit'
-            onClick={() => {
+            onClick={async () => {
               setIsOpen(false);
-              createIngredient(null, newIngredientName, isUbiquitous);
+              const newIngredient = await createIngredient(null, newIngredientName, isUbiquitous, queryClient);
+              addIngredient(newIngredient);
             }}
           >
             Add

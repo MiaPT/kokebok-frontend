@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { QueryClient, useQuery, useQueryClient } from '@tanstack/react-query';
 
 const baseUrl = 'http://127.0.0.1:8000'
 
@@ -39,10 +39,11 @@ export function useRecipe(id: number) {
   return recipe;
 }
 
-export function createIngredient(
+export async function createIngredient(
   name_en: string | null,
   name_no: string | null,
-  is_ubiquitus: boolean
+  is_ubiquitus: boolean,
+  queryClient: QueryClient
 ) {
   const ingredient = { name_en, name_no, is_ubiquitus };
   const requestOptions = {
@@ -51,9 +52,11 @@ export function createIngredient(
     body: JSON.stringify(ingredient),
   };
   console.log('json: ', requestOptions.body);
-  fetch(`${baseUrl}/api/recipes/ingredients`, requestOptions)
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+  const res = await fetch(`${baseUrl}/api/recipes/ingredients`, requestOptions)
+  const data: Ingredient = await res.json()
+  queryClient.setQueryData(['ingredients-list'], (oldIngredientList: Ingredient[]) => [...oldIngredientList, data])
+  return data
+  
 }
 
 export function createRecipe(recipe: Recipe, image?: Blob){
