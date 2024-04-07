@@ -37,26 +37,30 @@ export default function AddIngredientDialog({
   }, [initialValue]);
 
   return (
-    <Dialog open={isOpen}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
           <DialogTitle>Register new ingredient</DialogTitle>
-          <DialogDescription>
+        </DialogHeader>
+        <div>
             <label htmlFor='ingredientNameNo'>Name for ingredient</label>
             <input
               id='ingredientNameNo'
-              className='input'
+              className='input py-1 px-4'
               type='text'
               value={newIngredientName}
               onChange={(e) => setNewIngredientName(e.target.value)}
             />
             <TooltipProvider>
-              <Tooltip>
+              <Tooltip
+                delayDuration={300}
+              >
                 <TooltipTrigger>
                   <label htmlFor='isUbiquitous'>Ubiquitous</label>
                   <input
                     id='isUbiquitous'
                     type='checkbox'
+                    className='checkbox'
                     checked={isUbiquitous}
                     onChange={(e) => setIsUbiquitous(e.target.checked)}
                   />
@@ -69,21 +73,17 @@ export default function AddIngredientDialog({
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
-          </DialogDescription>
-        </DialogHeader>
-        <div className='grid gap-4 py-4'>
-          <div className='grid grid-cols-4 items-center gap-4'></div>
-          <div className='grid grid-cols-4 items-center gap-4'></div>
-        </div>
+          </div>
         <DialogFooter>
           <button
+            className='btn variant-filled'
             type='submit'
             onClick={() => {
               setIsOpen(false);
               createIngredient(null, newIngredientName, isUbiquitous);
             }}
           >
-            Save changes
+            Add
           </button>
         </DialogFooter>
       </DialogContent>
