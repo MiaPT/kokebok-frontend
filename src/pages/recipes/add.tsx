@@ -1,11 +1,22 @@
 import IngredientDropdown from '@/components/IngredientDropdown';
+import { createRecipe } from '@/lib/api/recipes';
 import { useState } from 'react';
 
 export default function RecipeForm() {
 
   const [recipeIngredients, setRecipeIngredients] = useState<RecipeIngredient[]>([])
+  const [recipeTitle, setRecipeTitle] = useState("")
+  const [recipeDescription, setRecipeDescription] = useState("")
+  const [recipeInstructions, setRecipeInstructions] = useState("")
+  const [timeEstimate, setTimeEstimate] = useState(0)
 
-  console.log(recipeIngredients)
+  const newRecipe: Recipe = {
+    instructions: recipeInstructions,
+    preamble: recipeDescription,
+    ingredients: recipeIngredients,
+    total_time: timeEstimate,
+    title: recipeTitle,
+  }
 
   function addRecipeIngredient(ingredient: Ingredient) {
     const newIngredient = {
@@ -14,7 +25,6 @@ export default function RecipeForm() {
       name_in_recipe: ingredient.name_no,
       base_amount: 1, 
       is_optional: false,
-      group_name: "",
       unit: "g",
     }
 
@@ -50,21 +60,28 @@ export default function RecipeForm() {
 
 
   return (
-    <form className='ml-[25%] mt-20 w-[50%]'>
+    <form className='ml-[25%] mt-20 w-[50%]' onSubmit={() => createRecipe(newRecipe)}>
       <label htmlFor='title' className='block '>
         Title
       </label>
-      <input type='text' id='title' />
+      <input type='text' id='title' value={recipeTitle} onChange={
+        (e) => setRecipeTitle(e.target.value)
+      } />
 
       <label htmlFor='description' className='block '>
         Description
       </label>
-      <textarea id='description' />
+      <textarea id='description' value={recipeDescription} onChange={(e) => setRecipeDescription(e.target.value)}/>
+
+      <label htmlFor='instructions' className='block '>
+        Instructions
+      </label>
+      <textarea id='instructions' value={recipeInstructions} onChange={(e) => setRecipeInstructions(e.target.value)}/>
 
       <label htmlFor='time' className='block '>
         Time estimate (minutes)
       </label>
-      <input type='number' id='time' />
+      <input type='number' id='time' value={timeEstimate} onChange={(e) => setTimeEstimate(parseInt(e.target.value))}/>
 
       <br />
       <br />
@@ -88,6 +105,7 @@ export default function RecipeForm() {
             </select>
         </div>
       ))}
+      <button className='border mt-5' type='submit' >Submit</button>
     </form>
   );
 }

@@ -9,22 +9,25 @@ declare type RecipeSummary = {
 };
 
 declare type Recipe = {
-  id: number;
+  id?: number;
   title: string;
-  content: string;
-  created_at: Date;
-  hero_image: string;
-  ingredients: Ingredient[];
-  origin_url: string;
+  instructions: string;
+  created_at?: Date;
+  hero_image?: string;
+  ingredients: RecipeIngredient[];
+  rest_text?: string;
+  language?: string;
+  origin_url?: string;
   preamble: string;
-  servings: number;
+  servings?: number;
   total_time: number;
-  original_author: string;
-  yields_number: number;
-  yields_type: string;
-  video_url: string;
-  other_source: string;
+  original_author?: string;
+  yields_number?: number;
+  yields_type?: string;
+  video_url?: string;
+  other_source?: string;
 };
+
 
 declare type Ingredient = {
   id: number;
@@ -40,7 +43,7 @@ declare type RecipeIngredient = {
   base_ingredient: string;
   name_in_recipe: string;
   is_optional: boolean;
-  group_name: string;
+  group_name?: string;
   base_amount: number;
   unit: string;
   base_ingredient_id: number;

@@ -32,7 +32,7 @@ export default function Home() {
           ))}
         </div>
 
-        <p>{recipe && recipe.content}</p>
+        <p>{recipe && recipe.preamble}</p>
       </div>
     </main>
   );

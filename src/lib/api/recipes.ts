@@ -55,3 +55,17 @@ export function createIngredient(
     .then((response) => response.json())
     .then((data) => console.log(data));
 }
+
+export function createRecipe(recipe: Recipe, image?: Blob){
+  let formData = new FormData()
+  image && formData.append("hero_image", image)
+  formData.append("full_recipe", JSON.stringify(recipe))
+  const requestOptions = {
+    method: 'POST',
+    body: formData
+  }
+  console.log('json: ', requestOptions.body);
+  fetch(`${baseUrl}/api/recipes/recipes`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+}
