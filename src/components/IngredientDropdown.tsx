@@ -46,10 +46,9 @@ export default function IngredientDropdown({
           setIngredientInput('');
         }}
       >
-        <Combobox.Label className={'text-white'}>
-          Add ingredient to recipe
-        </Combobox.Label>
+        <Combobox.Label>Add ingredient to recipe</Combobox.Label>
         <Combobox.Input
+          className='input px-6 py-2'
           value={ingredientInput}
           onChange={(e) => setIngredientInput(e.target.value)}
         ></Combobox.Input>

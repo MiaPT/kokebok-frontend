@@ -1,4 +1,5 @@
 import IngredientDropdown from '@/components/IngredientDropdown';
+import { Input } from '@/components/shadcn/Input';
 import { createRecipe } from '@/lib/api/recipes';
 import { useState } from 'react';
 
@@ -65,9 +66,10 @@ export default function RecipeForm() {
       <label htmlFor='title' className='block '>
         Title
       </label>
-      <input
+      <Input
         type='text'
         id='title'
+        // className='input py-2 px-6'
         value={recipeTitle}
         onChange={(e) => setRecipeTitle(e.target.value)}
       />
@@ -77,6 +79,7 @@ export default function RecipeForm() {
       </label>
       <textarea
         id='description'
+        className='textarea variant-form-material p-2'
         value={recipeDescription}
         onChange={(e) => setRecipeDescription(e.target.value)}
       />
@@ -86,6 +89,8 @@ export default function RecipeForm() {
       </label>
       <textarea
         id='instructions'
+        className='textarea variant-form-material p-2'
+        rows={10}
         value={recipeInstructions}
         onChange={(e) => setRecipeInstructions(e.target.value)}
       />
@@ -93,9 +98,10 @@ export default function RecipeForm() {
       <label htmlFor='time' className='block '>
         Time estimate (minutes)
       </label>
-      <input
+      <Input
         type='number'
         id='time'
+        className='w-36'
         value={timeEstimate}
         onChange={(e) => setTimeEstimate(parseInt(e.target.value))}
       />
@@ -112,14 +118,14 @@ export default function RecipeForm() {
         <div className=' border' key={index}>
           Base ingredient: {ing.base_ingredient}
           <label htmlFor='name_in_recipe'>Name in recipe</label>
-          <input
+          <Input
             type='text'
             name='name_in_recipe'
             value={ing.name_in_recipe}
             onChange={(e) => handleIngredientChange(index, e)}
           />
           <label htmlFor='base_amount'>Amount</label>
-          <input
+          <Input
             type='number'
             name='base_amount'
             value={ing.base_amount}
@@ -130,7 +136,9 @@ export default function RecipeForm() {
             onChange={(e) => handleIngredientChange(index, e)}
           >
             {units.map((u) => (
-              <option key={u} value={u}>{u}</option>
+              <option key={u} value={u}>
+                {u}
+              </option>
             ))}
           </select>
           <button
@@ -143,7 +151,7 @@ export default function RecipeForm() {
           </button>
         </div>
       ))}
-      <button className='mt-5 border' type='submit'>
+      <button className='variant-filled-primary btn' type='submit'>
         Submit
       </button>
     </form>
