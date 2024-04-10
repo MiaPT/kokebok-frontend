@@ -1,10 +1,8 @@
-import { Button } from '@/components/Button';
 import { useIngredients, useRecipes } from '@/lib/api/recipes';
 import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 
 import { RecipeCard } from '@/components/RecipeCard';
-import Navbar from '@/components/Navbar';
 
 export default function Home() {
   const ingredients = useIngredients();
@@ -24,7 +22,7 @@ export default function Home() {
   };
 
   return (
-    <main className='ml-auto mr-auto mt-14 w-[70vw]'>
+    <main className='ml-auto mr-auto mt-14 md:w-[70vw] sm:w-[85vw]'>
       <div className='flex w-full justify-center '>
         <div className='grid grid-cols-3 gap-6'>
           {recipes.map((r) => (

@@ -1,6 +1,6 @@
-import { QueryClient, useQuery, useQueryClient } from '@tanstack/react-query';
+import { QueryClient, useQuery } from '@tanstack/react-query';
 
-const baseUrl = 'http://127.0.0.1:8000';
+export const baseUrl = 'http://127.0.0.1:8000';
 
 export function useIngredients() {
   const { data: ingredients } = useQuery<Ingredient[]>({

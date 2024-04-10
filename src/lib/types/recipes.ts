@@ -2,7 +2,7 @@ declare type RecipeSummary = {
   id: number;
   title: string;
   created_at: Date;
-  hero_image: string;
+  thumbnail: string;
   ingredients: Ingredient[];
   preamble: string;
   total_time: number;
