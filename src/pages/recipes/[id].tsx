@@ -12,13 +12,26 @@ export default function RecipeDetails() {
   const recipeId = parseInt(query.id as string);
 
   const recipe = useRecipe(recipeId);
-
+  if (!recipe){
+    return null
+  }
   return (
-    <div>
+    <>
       <Head>
-        <title>{recipe?.title}</title>
+        <title>{recipe.title}</title>
       </Head>
-      hello, you are looking at the recipe with id {JSON.stringify(recipe)}
-    </div>
+      <div>
+        <h2 className='text-4xl'>{recipe.title}</h2>
+        {recipe.preamble}
+        {recipe.instructions}
+        {recipe.rest_text}
+        <ul>
+          {recipe.ingredients.map(i => (
+            <li>{i.name_in_recipe} {i.base_amount} {i.unit}</li>
+          ))}
+        </ul>
+
+      </div>
+    </>
   );
 }
